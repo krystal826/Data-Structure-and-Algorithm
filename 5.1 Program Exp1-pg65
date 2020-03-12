@@ -1,0 +1,100 @@
+//List.h
+//Declaration of class List
+
+#ifndef LIST_H
+#define LIST_H
+
+const int maxSize = 100;
+
+class List
+{
+public:
+	List();
+	~List();
+
+	int numberOfItem();             //Return number of item
+	void addItem(int item);         //Add item
+	void printItem();               //Print item in the list
+
+private:
+	int size;                       //size shows the number of item in the list
+	int array[maxSize];             //array that keep the item
+};
+#endif
+
+
+
+
+//List.cpp
+//Define the implementation of all methods in class List
+
+#include <iostream>
+using namespace std;
+#include  "List.h"
+
+List::List()                        //Constructor
+{
+	size = 0;
+}
+
+List::~List()                       //Destructor
+{}
+
+int List::numberOfItem()            //Return the size of the list
+{
+	return size;
+}
+
+void List::addItem(int item)        //Add new item
+{
+	if (size == maxSize)
+	{
+		cout << "***There is no more place left*****\n";
+		return;
+	}
+	array[size] = item;
+	size++;                         //Add 1 to variable size
+}
+
+void List::printItem()              //Print items in list
+{
+	for (int i = 0; i < size; i++)
+		cout << array[i] << " ";
+	cout << "\n";
+}
+
+
+
+
+//ListMain.cpp
+//Implementation
+//Create object and method implementation
+
+
+#include <iostream>
+using namespace std;
+#include "List.h"
+
+void main()
+{
+	int item;
+
+	List ItemList;
+
+	cout << "Now there are : " << ItemList.numberOfItem()
+		<< " item in the list\n\n";
+
+	cout << "Enter a digit : ";
+	cin >> item;
+
+	for (int i = 0; i < 10; i++)
+	{
+		ItemList.addItem(item);
+		cout << "Item " << item++ << " is added.";
+	}
+	cout << "Now there are : " << ItemList.numberOfItem()
+		<< " item in the list\n\n";
+	cout << "The list are : \n";
+	ItemList.printItem();
+	system("pause");
+}
