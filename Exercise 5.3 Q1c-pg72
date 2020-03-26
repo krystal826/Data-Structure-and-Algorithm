@@ -1,0 +1,108 @@
+//List.h
+
+#ifndef LIST_H
+#define LIST_H
+
+const int maxSize = 100;
+
+class List
+{
+public:
+	List();
+	~List();
+
+	int numberOfItem();
+	void addItem(int item, int position);
+	void printItem();
+
+private:
+	int size;
+	int array[maxSize];
+
+};
+#endif
+
+
+//List.cpp
+
+#include <iostream>
+using namespace std;
+#include "List.h"
+
+List::List()
+{
+	size = 0;
+}
+
+List::~List()
+{}
+
+int List::numberOfItem()
+{
+	return size;
+}
+
+void List::addItem(int item, int position)
+{
+	if (size == maxSize)
+	{
+		cout << "****There is no more place left****\n";
+		return;
+	}
+
+	if (position<0 || position>size)
+	{
+		cout << "****Invalid position****\n";
+		return;
+	}
+
+
+	for (int i = size; i >= position; i--)
+	{
+		array[i] = array[i - 1];
+	}
+	array[position - 1] = item;
+	size++;
+
+}
+
+void List::printItem()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		cout << array[i] << " ";
+	}
+
+}
+
+
+
+//Main.cpp
+
+
+#include <iostream>
+using namespace std;
+#include"List.h"
+
+int main()
+{
+	int item, position;
+
+	List ItemList;
+
+	for (int i = 0; i <= 10; i++)
+	{
+		ItemList.addItem(i, i);
+	}
+
+	cout << "The list now are: " << endl;
+	ItemList.printItem();
+	cout << "\nEnter a number to be added: " << endl;
+	cin >> item;
+	ItemList.addItem(item, 1);
+	cout << "The new list now are: " << endl;
+	ItemList.printItem();
+
+	return 0;
+	system("pause");
+}
