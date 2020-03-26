@@ -77,18 +77,18 @@ int main()
 
 	List ItemList;
 
-	cout << "Now there are : " << ItemList.numberOfItem() << " item in the list\n" << endl;
+	cout << "Now there are : " << ItemList.numberOfItem() << " item in the list"<<endl << endl;
 
-	cout << "Enter an alphabet: ";
+	cout << "Enter an alphabet: "<<endl;
 	cin >> item;
 
 	for (int i = 0; i < 10; i++)
 	{
 		ItemList.addItem(item);
-		cout << "Item " << item++ << " is added. ";
+		cout << "Item " << item++ << " is added. "<<endl;
 	}
-	cout << "\nNow there are : " << ItemList.numberOfItem() << " item in the list\n\n";
-	cout << "List: \n";
+	cout << "\nNow there are : " << ItemList.numberOfItem() << " item in the list"<<endl<<endl;
+	cout << "List: "<<endl;
 	ItemList.printItem();
 
 	return 0;
